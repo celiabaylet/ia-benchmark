@@ -1,0 +1,7 @@
+.venv
+bronze
+silver
+.claude
+*.parquet
+target
+log
