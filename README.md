@@ -74,10 +74,23 @@ EXPLICATIONS :
 - `Couche gold` : Données métiers (performance des prompts) --> création de la base duckdb dans warehouse
     - Gold répond directement à nos questions métier 
 
+    Stockage des données Gold :
+
+        Les modèles Mart sont matérialisés dans le schéma main_gold de notre base DuckDB.
+
+        Ils contiennent les indicateurs métiers utilisés pour répondre à nos quatre questions d’analyse :
+
+        mart_category_performance, 
+        mart_difficulty_performance, 
+        mart_type_performance, 
+        mart_prompt_performance
+
+
+
 Dans la granularité des couches Silver et Gold, on utilise l’organisation `staging`, `intermediate` et `mart` (dans une base duckdb).
 Staging : première couche qui récupère et standardise les réponses du modèle, en les enrichissant avec les informations des questions.
 Intermediate : couche qui prépare les indicateurs nécessaires, notamment correct_flag, qui permet d’identifier si la réponse du modèle est correcte.
-Mart : couche qui répond aux questions métier en calculant les indicateurs finaux, comme le taux de réussite et le temps de réponse moyen.
+Mart : couche qui répond aux questions métier en calculant les indicateurs finaux, comme le taux de réussite et le temps de réponse moyen. 
 
 ### **Ingénierie des données :**
 
