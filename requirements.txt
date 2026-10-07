@@ -9,3 +9,5 @@ dbt-duckdb
 streamlit
 python-dotenv
 openai
+requests
+duckdb

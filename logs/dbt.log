@@ -3723,3 +3723,318 @@ alter table "trivial"."main_gold"."mart_type_performance__dbt_tmp" rename to "ma
 [0m10:15:53.159475 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EDDE26AAB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EDE09613D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EDE1E1F1D0>]}
 [0m10:15:53.159817 [debug] [MainThread]: Flushing usage events
 [0m10:15:53.687455 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m11:08:17.749418 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F580A3C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F33B4410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F81E79D0>]}
+
+
+============================== 11:08:17.754029 | baba00d8-61ca-4d9e-a961-8b6ba84016bb ==============================
+[0m11:08:17.754029 [info ] [MainThread]: Running with dbt=1.12.5
+[0m11:08:17.754626 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'static_parser': 'True', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Utilisateur\\Documents\\MasteredataIA\\COURS\\datalakes\\projetTrivialPoursuite', 'use_colors': 'True', 'hints_enabled': 'True', 'invocation_command': 'dbt docs generate', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'C:\\Users\\Utilisateur\\Documents\\MasteredataIA\\COURS\\datalakes\\projetTrivialPoursuite\\logs'}
+[0m11:08:18.037318 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'baba00d8-61ca-4d9e-a961-8b6ba84016bb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F8287100>]}
+[0m11:08:18.121290 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'baba00d8-61ca-4d9e-a961-8b6ba84016bb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F8454E20>]}
+[0m11:08:18.125651 [info ] [MainThread]: Registered adapter: duckdb=1.11.0
+[0m11:08:18.430364 [debug] [MainThread]: checksum: 0942d943003f3fccaeb7c0773b635c3723a3df5117ad06592b70e020d80bc06e, vars: {}, profile: trivial_tp, target: dev, version: 1.12.5
+[0m11:08:18.579124 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m11:08:18.579528 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m11:08:18.579786 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m11:08:18.589015 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'baba00d8-61ca-4d9e-a961-8b6ba84016bb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F87F2650>]}
+[0m11:08:18.625656 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'baba00d8-61ca-4d9e-a961-8b6ba84016bb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F861E030>]}
+[0m11:08:18.626166 [info ] [MainThread]: Found 6 models, 2 sources, 500 macros
+[0m11:08:18.626647 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'baba00d8-61ca-4d9e-a961-8b6ba84016bb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F8AA5010>]}
+[0m11:08:18.628614 [info ] [MainThread]: 
+[0m11:08:18.629035 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m11:08:18.629424 [info ] [MainThread]: 
+[0m11:08:18.630037 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m11:08:18.634439 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_trivial_main_gold'
+[0m11:08:18.747510 [debug] [ThreadPool]: Using duckdb connection "list_trivial_main_gold"
+[0m11:08:18.747907 [debug] [ThreadPool]: On list_trivial_main_gold: BEGIN
+[0m11:08:18.748196 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m11:08:18.762468 [debug] [ThreadPool]: SQL status: OK in 0.014 seconds
+[0m11:08:18.762858 [debug] [ThreadPool]: Using duckdb connection "list_trivial_main_gold"
+[0m11:08:18.763136 [debug] [ThreadPool]: On list_trivial_main_gold: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "trivial_tp", "target_name": "dev", "connection_name": "list_trivial_main_gold"} */
+select
+      'trivial' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main_gold'
+    and lower(table_catalog) = 'trivial'
+  
+[0m11:08:18.766610 [debug] [ThreadPool]: SQL status: OK in 0.003 seconds
+[0m11:08:18.767782 [debug] [ThreadPool]: On list_trivial_main_gold: ROLLBACK
+[0m11:08:18.768222 [debug] [ThreadPool]: On list_trivial_main_gold: Close
+[0m11:08:18.768725 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_trivial_main_gold, now list_trivial_main)
+[0m11:08:18.770555 [debug] [ThreadPool]: Using duckdb connection "list_trivial_main"
+[0m11:08:18.770867 [debug] [ThreadPool]: On list_trivial_main: BEGIN
+[0m11:08:18.771109 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m11:08:18.771524 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m11:08:18.771778 [debug] [ThreadPool]: Using duckdb connection "list_trivial_main"
+[0m11:08:18.772024 [debug] [ThreadPool]: On list_trivial_main: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "trivial_tp", "target_name": "dev", "connection_name": "list_trivial_main"} */
+select
+      'trivial' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main'
+    and lower(table_catalog) = 'trivial'
+  
+[0m11:08:18.773592 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m11:08:18.774671 [debug] [ThreadPool]: On list_trivial_main: ROLLBACK
+[0m11:08:18.775064 [debug] [ThreadPool]: On list_trivial_main: Close
+[0m11:08:18.776039 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'baba00d8-61ca-4d9e-a961-8b6ba84016bb', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F8ACC870>]}
+[0m11:08:18.779737 [debug] [Thread-1 (]: Began running node model.projet_trivial.stg_responses
+[0m11:08:18.780199 [debug] [Thread-1 (]: Acquiring new duckdb connection 'model.projet_trivial.stg_responses'
+[0m11:08:18.780535 [debug] [Thread-1 (]: Began compiling node model.projet_trivial.stg_responses
+[0m11:08:18.786159 [debug] [Thread-1 (]: Writing injected SQL for node "model.projet_trivial.stg_responses"
+[0m11:08:18.787108 [debug] [Thread-1 (]: Began executing node model.projet_trivial.stg_responses
+[0m11:08:18.787771 [debug] [Thread-1 (]: Finished running node model.projet_trivial.stg_responses
+[0m11:08:18.788319 [debug] [Thread-1 (]: Began running node model.projet_trivial.int_responses
+[0m11:08:18.788700 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.projet_trivial.stg_responses, now model.projet_trivial.int_responses)
+[0m11:08:18.789012 [debug] [Thread-1 (]: Began compiling node model.projet_trivial.int_responses
+[0m11:08:18.790672 [debug] [Thread-1 (]: Writing injected SQL for node "model.projet_trivial.int_responses"
+[0m11:08:18.791669 [debug] [Thread-1 (]: Began executing node model.projet_trivial.int_responses
+[0m11:08:18.792305 [debug] [Thread-1 (]: Finished running node model.projet_trivial.int_responses
+[0m11:08:18.792879 [debug] [Thread-1 (]: Began running node model.projet_trivial.mart_category_performance
+[0m11:08:18.793258 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.projet_trivial.int_responses, now model.projet_trivial.mart_category_performance)
+[0m11:08:18.793578 [debug] [Thread-1 (]: Began compiling node model.projet_trivial.mart_category_performance
+[0m11:08:18.795744 [debug] [Thread-1 (]: Writing injected SQL for node "model.projet_trivial.mart_category_performance"
+[0m11:08:18.796705 [debug] [Thread-1 (]: Began executing node model.projet_trivial.mart_category_performance
+[0m11:08:18.797316 [debug] [Thread-1 (]: Finished running node model.projet_trivial.mart_category_performance
+[0m11:08:18.797651 [debug] [Thread-1 (]: Began running node model.projet_trivial.mart_difficulty_performance
+[0m11:08:18.798042 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.projet_trivial.mart_category_performance, now model.projet_trivial.mart_difficulty_performance)
+[0m11:08:18.798369 [debug] [Thread-1 (]: Began compiling node model.projet_trivial.mart_difficulty_performance
+[0m11:08:18.799836 [debug] [Thread-1 (]: Writing injected SQL for node "model.projet_trivial.mart_difficulty_performance"
+[0m11:08:18.800763 [debug] [Thread-1 (]: Began executing node model.projet_trivial.mart_difficulty_performance
+[0m11:08:18.801356 [debug] [Thread-1 (]: Finished running node model.projet_trivial.mart_difficulty_performance
+[0m11:08:18.801716 [debug] [Thread-1 (]: Began running node model.projet_trivial.mart_prompt_performance
+[0m11:08:18.802100 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.projet_trivial.mart_difficulty_performance, now model.projet_trivial.mart_prompt_performance)
+[0m11:08:18.802400 [debug] [Thread-1 (]: Began compiling node model.projet_trivial.mart_prompt_performance
+[0m11:08:18.803808 [debug] [Thread-1 (]: Writing injected SQL for node "model.projet_trivial.mart_prompt_performance"
+[0m11:08:18.804635 [debug] [Thread-1 (]: Began executing node model.projet_trivial.mart_prompt_performance
+[0m11:08:18.805242 [debug] [Thread-1 (]: Finished running node model.projet_trivial.mart_prompt_performance
+[0m11:08:18.805649 [debug] [Thread-1 (]: Began running node model.projet_trivial.mart_type_performance
+[0m11:08:18.806035 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.projet_trivial.mart_prompt_performance, now model.projet_trivial.mart_type_performance)
+[0m11:08:18.806339 [debug] [Thread-1 (]: Began compiling node model.projet_trivial.mart_type_performance
+[0m11:08:18.807730 [debug] [Thread-1 (]: Writing injected SQL for node "model.projet_trivial.mart_type_performance"
+[0m11:08:18.808520 [debug] [Thread-1 (]: Began executing node model.projet_trivial.mart_type_performance
+[0m11:08:18.809091 [debug] [Thread-1 (]: Finished running node model.projet_trivial.mart_type_performance
+[0m11:08:18.809950 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m11:08:18.810207 [debug] [MainThread]: Connection 'list_trivial_main' was properly closed.
+[0m11:08:18.810434 [debug] [MainThread]: Connection 'model.projet_trivial.mart_type_performance' was properly closed.
+[0m11:08:18.811521 [debug] [MainThread]: Command end result
+[0m11:08:18.893605 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\target\manifest.json
+[0m11:08:18.897458 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\target\semantic_manifest.json
+[0m11:08:18.928203 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\target\osi_document.json
+[0m11:08:18.935650 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\target\run_results.json
+[0m11:08:19.053962 [debug] [MainThread]: Acquiring new duckdb connection 'generate_catalog'
+[0m11:08:19.054379 [info ] [MainThread]: Building catalog
+[0m11:08:19.062986 [debug] [ThreadPool]: Acquiring new duckdb connection 'trivial.information_schema'
+[0m11:08:19.074024 [debug] [ThreadPool]: Using duckdb connection "trivial.information_schema"
+[0m11:08:19.074543 [debug] [ThreadPool]: On trivial.information_schema: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "trivial_tp", "target_name": "dev", "connection_name": "trivial.information_schema"} */
+
+    
+    with tables as (
+      select *
+    from (
+        select
+            t.database_name as table_database,
+            t.schema_name as table_schema,
+            t.table_name as table_name,
+            'BASE TABLE' as table_type,
+            t.comment as table_comment
+        from duckdb_tables() t
+        where upper(t.database_name) = upper('trivial')
+
+        union all
+
+        select
+            v.database_name as table_database,
+            v.schema_name as table_schema,
+            v.view_name as table_name,
+            'VIEW' as table_type,
+            v.comment as table_comment
+        from duckdb_views() v
+        where upper(v.database_name) = upper('trivial')
+    ) catalog_tables
+      
+        where (
+
+                (
+                    upper(table_schema) = upper('main')
+                    and upper(table_name) = upper('int_responses')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('silver')
+                    and upper(table_name) = upper('questions')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('silver')
+                    and upper(table_name) = upper('responses')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main_gold')
+                    and upper(table_name) = upper('mart_prompt_performance')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main')
+                    and upper(table_name) = upper('stg_responses')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main_gold')
+                    and upper(table_name) = upper('mart_type_performance')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main_gold')
+                    and upper(table_name) = upper('mart_category_performance')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main_gold')
+                    and upper(table_name) = upper('mart_difficulty_performance')
+                ))
+    
+    ),
+    columns as (
+      select *
+    from (
+        select
+            c.database_name as table_database,
+            c.schema_name as table_schema,
+            c.table_name as table_name,
+            c.column_name as column_name,
+            c.column_index as column_index,
+            c.data_type as column_type,
+            c.comment as column_comment
+        from duckdb_columns() c
+        where upper(c.database_name) = upper('trivial')
+    ) catalog_columns
+      
+        where (
+
+                (
+                    upper(table_schema) = upper('main')
+                    and upper(table_name) = upper('int_responses')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('silver')
+                    and upper(table_name) = upper('questions')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('silver')
+                    and upper(table_name) = upper('responses')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main_gold')
+                    and upper(table_name) = upper('mart_prompt_performance')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main')
+                    and upper(table_name) = upper('stg_responses')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main_gold')
+                    and upper(table_name) = upper('mart_type_performance')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main_gold')
+                    and upper(table_name) = upper('mart_category_performance')
+                ) or 
+
+                (
+                    upper(table_schema) = upper('main_gold')
+                    and upper(table_name) = upper('mart_difficulty_performance')
+                ))
+    
+    )
+    select
+        tables.table_database,
+        tables.table_schema,
+        tables.table_name,
+        tables.table_type,
+        tables.table_comment,
+        columns.column_name,
+        columns.column_index,
+        columns.column_type,
+        columns.column_comment,
+        null as table_owner
+    from tables
+    join columns using (table_database, table_schema, table_name)
+    order by table_schema, table_name, column_index
+  
+  
+[0m11:08:19.075042 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m11:08:19.091809 [debug] [ThreadPool]: SQL status: OK in 0.017 seconds
+[0m11:08:19.095075 [debug] [ThreadPool]: On trivial.information_schema: Close
+[0m11:08:19.106914 [debug] [MainThread]: Wrote artifact CatalogArtifact to C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\target\catalog.json
+[0m11:08:19.136106 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\target\manifest.json
+[0m11:08:19.139779 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\target\semantic_manifest.json
+[0m11:08:19.143273 [debug] [MainThread]: Wrote artifact OsiDocument to C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\target\osi_document.json
+[0m11:08:19.143652 [info ] [MainThread]: Catalog written to C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\target\catalog.json
+[0m11:08:19.144916 [debug] [MainThread]: Command `dbt docs generate` succeeded at 11:08:19.144810 after 1.56 seconds
+[0m11:08:19.145210 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m11:08:19.145444 [debug] [MainThread]: Connection 'trivial.information_schema' was properly closed.
+[0m11:08:19.145729 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F9EA1610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F9D54520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000291F5D3CEC0>]}
+[0m11:08:19.146081 [debug] [MainThread]: Flushing usage events
+[0m11:08:19.606228 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m11:08:30.236048 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CB82D3A3C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CB80974410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CB856BF9D0>]}
+
+
+============================== 11:08:30.240924 | 85bebdf6-e4e7-471b-bbc1-15e2d4561ab8 ==============================
+[0m11:08:30.240924 [info ] [MainThread]: Running with dbt=1.12.5
+[0m11:08:30.241709 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'static_parser': 'True', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Utilisateur\\Documents\\MasteredataIA\\COURS\\datalakes\\projetTrivialPoursuite', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'invocation_command': 'dbt docs serve', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'C:\\Users\\Utilisateur\\Documents\\MasteredataIA\\COURS\\datalakes\\projetTrivialPoursuite\\logs'}
+[0m11:08:30.507282 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '85bebdf6-e4e7-471b-bbc1-15e2d4561ab8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CB857BD5B0>]}
+[0m11:08:30.588629 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '85bebdf6-e4e7-471b-bbc1-15e2d4561ab8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CB85A148D0>]}
+[0m11:09:27.116277 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+
+[0m11:09:27.151918 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\.venv2\Lib\site-packages\dbt\cli\requires.py", line 198, in wrapper
+    result, success = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\.venv2\Lib\site-packages\dbt\cli\requires.py", line 144, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\.venv2\Lib\site-packages\dbt\cli\requires.py", line 295, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\.venv2\Lib\site-packages\dbt\cli\requires.py", line 340, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\.venv2\Lib\site-packages\dbt\cli\requires.py", line 387, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\.venv2\Lib\site-packages\dbt\cli\main.py", line 323, in docs_serve
+    results = task.run()
+  File "C:\Users\Utilisateur\Documents\MasteredataIA\COURS\datalakes\projetTrivialPoursuite\.venv2\Lib\site-packages\dbt\task\docs\serve.py", line 29, in run
+    httpd.serve_forever()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Utilisateur\AppData\Local\Programs\Python\Python314\Lib\socketserver.py", line 235, in serve_forever
+    ready = selector.select(poll_interval)
+  File "C:\Users\Utilisateur\AppData\Local\Programs\Python\Python314\Lib\selectors.py", line 314, in select
+    r, w, _ = self._select(self._readers, self._writers, [], timeout)
+              ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Utilisateur\AppData\Local\Programs\Python\Python314\Lib\selectors.py", line 305, in _select
+    r, w, x = select.select(r, w, w, timeout)
+              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+[0m11:09:27.153309 [debug] [MainThread]: Command `dbt docs serve` failed at 11:09:27.153197 after 57.07 seconds
+[0m11:09:27.153664 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CB85BAA850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CB85BAA650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002CB85B637A0>]}
+[0m11:09:27.154018 [debug] [MainThread]: Flushing usage events
+[0m11:09:27.590108 [debug] [MainThread]: An error was encountered while trying to flush usage events
