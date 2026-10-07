@@ -1,9 +1,6 @@
 # Secrets
 .env
 
-# Données générées
-
-
 # dbt
 target/
 logs/
