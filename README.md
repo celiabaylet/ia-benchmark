@@ -37,15 +37,17 @@ Conservation du fichier Bronze comme source non modifiée
 - `Couche silver` : fichier src/enrichment/silver_clean.py + réponses de l'IA avec le fichier src/enrichment/openAI_benchmark.py (script fr/en)
     - Silver contient des observations propres et exploitables
 
-        Suppression des valeurs invalides
+        Suppression des valeurs invalides (suppression des lignes où les champs essentiels sont manquants : catégorie, difficulté, question, réponse correcte ou type)
 
-        Normalisation des champs (création d'un 'QCM' pour l'IA)
+        Normalisation des champs (nettoyage des textes et mise en minuscules de certains champs)
 
-        Suppression des doublons des questions
+        Suppression des doublons des questions (à partir du `question_id` créé à partir du texte de la question)
 
-        Création d’un `question_id`
+        Création d’un `question_id` (identifiant créé à partir du texte de chaque question)
 
-        Conversion au format Parquet
+        Sélection et réorganisation des colonnes utiles (conservation des informations nécessaires au benchmark)
+
+        Conversion au format Parquet (stockage des données nettoyées dans `questions_clean.parquet`)
 
 
 EXPLICATIONS :
