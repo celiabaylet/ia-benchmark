@@ -133,3 +133,5 @@ Le dbt_project.yml configure le fonctionnement et l'organisation du projet dbt, 
 
 
 ![alt text](image.png)
+
+![alt text](image-1.png)
