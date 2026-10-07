@@ -1,8 +1,9 @@
 # Projet Trivial Poursuite
 ** méthodologie, votre organisation de projet et le setup complet**
-
+---------------------------------------------------------------------------------------
 
 ** NOS QUESTIONS METIER **
+
 Dans quelles catégories le modèle est-il le plus performant ?
 → Comparer le taux de bonnes réponses (%) par catégorie (histoire, sciences, géographie, etc.).
 
@@ -16,7 +17,6 @@ Le langage du prompt (français ou anglais) influence-t-il les performances et l
 → Comparer le taux de bonnes réponses (%) et le temps de réponse moyen selon la langue du prompt (français ou anglais), afin de déterminer si le modèle obtient de meilleurs résultats ou répond plus rapidement avec un prompt en anglais.
 
 # Méthodologie
-
 Mise en place d'une architecture en médaillon pour stocker les données de ce projet.
 
 ### **Architecture :**
@@ -35,16 +35,16 @@ Création d’un `question_id`
 Conversion au format Parquet
 
 EXPLICATIONS
-- Chaque question est transformée en QCM
-- Le modèle doit répondre uniquement par A, B, C ou D
-- Deux versions du prompt sont testées : français / anglais
-- Pour chaque réponse, stockage de :
-    - réponse brute du modèle
-    - lettre choisie
-    - bonne réponse
-    - résultat correct/incorrect
-    - temps de réponse
-    - langue du prompt
+    - Chaque question est transformée en QCM
+    - Le modèle doit répondre uniquement par A, B, C ou D
+    - Deux versions du prompt sont testées : français / anglais
+    - Pour chaque réponse, stockage de :
+        - réponse brute du modèle
+        - lettre choisie
+        - bonne réponse
+        - résultat correct/incorrect
+        - temps de réponse
+        - langue du prompt
 
 - `Couche gold` : Données métiers (performance des prompts) --> création de la base duckdb dans warehouse
     - Gold répond directement à nos questions métier 
@@ -56,11 +56,11 @@ Mart : couche qui répond aux questions métier en calculant les indicateurs fin
 
 ### **Ingénierie des données :**
 
-- Utilisation de dbt pour construire le lignage `staging → intermediate → gold`.
-# 1. Générer les fichiers de documentation et le catalogue
-dbt docs generate
-# 2. Lancer un serveur local pour visualiser le site dans votre navigateur
-dbt docs serve
+- Utilisation de dbt pour construire le lignage `staging → intermediate → gold`:
+    -Générer les fichiers de documentation et le catalogue
+        dbt docs generate
+    -Lancer un serveur local pour visualiser le site dans votre navigateur
+        dbt docs serve
 
 
 ### **Visualisation des résultats du benchmark :**
