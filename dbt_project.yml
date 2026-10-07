@@ -5,7 +5,7 @@ profile: 'trivial_tp'
 model-paths: ['src/models']
 
 models:
-  projet_spotify:
+  projet_trivial:
     staging:
       +materialized: view
     

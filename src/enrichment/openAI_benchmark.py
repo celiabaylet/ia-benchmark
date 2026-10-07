@@ -3,9 +3,9 @@ import re
 import random
 import time
 import ast
-
-import ollama
 import pandas as pd
+from openai import OpenAI
+from dotenv import load_dotenv
 
 
 # ============================================================
@@ -15,13 +15,17 @@ import pandas as pd
 INPUT_PATH = "data/silver/questions_clean.parquet"
 OUTPUT_PATH = "data/silver/responses.parquet"
 
-MODEL = "llama3.1:latest"
-PROMPT_VERSION = "qcm_v2"
+MODEL = "granite-4.2"
+
+PROMPTS = {
+    "qcm_fr": "français",
+    "qcm_en": "anglais"
+}
 
 # TEST :
 # 10 = teste seulement 10 questions
 # None = traite les 5097 questions
-TEST_LIMIT = 30
+TEST_LIMIT = 5300
 
 # Sauvegarde toutes les 10 questions
 CHECKPOINT_EVERY = 10
@@ -114,54 +118,85 @@ def create_qcm(row):
 # CREATION DU PROMPT
 # ============================================================
 
-def build_prompt(question, choices):
+def build_prompt(question, choices, prompt_version):
 
     choices_text = "\n".join(
         f"{letter}. {answer}"
         for letter, answer in choices.items()
     )
 
-    return f"""Réponds à la question suivante.
+    if prompt_version == "qcm_fr":
+
+        return f"""Réponds à la question suivante.
 
 {question}
 
 {choices_text}
 
 Ta réponse doit être exactement une seule lettre parmi A, B, C ou D.
+
 Ne donne aucune explication.
 Ne répète pas la question.
 Ne donne pas le texte de la réponse.
+
 Réponse :"""
 
+    elif prompt_version == "qcm_en":
+
+        return f"""Answer the following question.
+
+{question}
+
+{choices_text}
+
+Your answer must be exactly one letter: A, B, C, or D.
+
+Do not provide any explanation.
+Do not repeat the question.
+Do not provide the answer text.
+
+Answer:"""
+
+    else:
+        raise ValueError(f"Prompt inconnu : {prompt_version}")
+
 
 # ============================================================
-# APPEL OLLAMA
+# APPEL openAI
 # ============================================================
 
-def ask_ollama(question, choices):
+load_dotenv()
 
-    prompt = build_prompt(question, choices)
+client = OpenAI(
+    base_url=os.getenv("OPENAI_BASE_URL"),
+    api_key=os.getenv("OPENAI_API_KEY")
+)
+
+
+def ask_model(question, choices, prompt_version):
+
+    prompt = build_prompt(
+        question,
+        choices,
+        prompt_version
+    )
 
     start = time.perf_counter()
 
-    response = ollama.chat(
-        model=MODEL,
+    response = client.chat.completions.create(
+        model="granite-4.2",
         messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
+            {"role": "user", "content": prompt}
         ],
-        options={
-            "temperature": 0,
-            "num_predict": 2
-        }
+        temperature=0,
+        max_tokens=5,
+        reasoning_effort='none'
     )
+
 
     elapsed = time.perf_counter() - start
 
-    raw_answer = response["message"]["content"].strip()
-
+    raw_answer = (response.choices[0].message.content or "").strip()
     answer_letter = extract_letter(raw_answer)
 
     return raw_answer, answer_letter, elapsed, prompt
@@ -175,130 +210,64 @@ print("Chargement du Silver...")
 
 df = pd.read_parquet(INPUT_PATH)
 
-print(f"Questions disponibles : {len(df)}")
-
-
-# ============================================================
-# LIMITATION POUR LE TEST
-# ============================================================
-
 if TEST_LIMIT is not None:
-
     df = df.head(TEST_LIMIT).copy()
 
-    print(f"MODE TEST : {len(df)} questions")
-
 
 # ============================================================
-# COLONNES DE RESULTAT
+# BENCHMARK
 # ============================================================
 
-df["model"] = MODEL
-df["prompt_version"] = PROMPT_VERSION
-
-df["qcm_choices"] = ""
-df["correct_letter"] = ""
-
-df["ai_answer_raw"] = ""
-df["ai_answer_letter"] = ""
-
-df["ai_correct"] = False
-
-df["response_time"] = 0.0
-
-df["prompt"] = ""
-
-df["status"] = "pending"
-
-
-# ============================================================
-# TRAITEMENT
-# ============================================================
+results = []
 
 for i, (index, row) in enumerate(df.iterrows(), start=1):
 
     question = row["question"]
 
-    print()
-    print("=" * 70)
-    print(f"Question {i}/{len(df)}")
-    print(question)
-
     try:
 
-        # ----------------------------------------------------
-        # Création du QCM
-        # ----------------------------------------------------
+        # Création du QCM UNE SEULE FOIS
+        # pour que les prompts français et anglais
+        # reçoivent exactement les mêmes choix.
 
         choices, correct_letter = create_qcm(row)
 
-        print()
-        print("CHOIX :")
+        # On teste les deux prompts
+        for prompt_version in PROMPTS:
 
-        for letter, answer in choices.items():
-            print(f"  {letter}. {answer}")
+            raw_answer, answer_letter, response_time, prompt = ask_model(
+                question,
+                choices,
+                prompt_version
+            )
 
-        print()
-        print(f"Bonne réponse : {correct_letter}")
+            is_correct = answer_letter == correct_letter
 
+            results.append({
+                "question_id": row["question_id"],
+                "ai_answer_raw": raw_answer,
+                "ai_answer_letter": answer_letter,
+                "correct_letter": correct_letter,
+                "ai_correct": is_correct,
+                "response_time": response_time,
+                "model": MODEL,
+                "prompt_version": prompt_version,
+                "status": "success"
+            })
 
-        # ----------------------------------------------------
-        # Appel Ollama
-        # ----------------------------------------------------
-
-        raw_answer, answer_letter, response_time, prompt = ask_ollama(
-            question,
-            choices
-        )
-
-
-        # ----------------------------------------------------
-        # Vérification
-        # ----------------------------------------------------
-
-        is_correct = (
-            answer_letter == correct_letter
-        )
-
-
-        # ----------------------------------------------------
-        # Sauvegarde
-        # ----------------------------------------------------
-
-        df.at[index, "qcm_choices"] = str(choices)
-
-        df.at[index, "correct_letter"] = correct_letter
-
-        df.at[index, "ai_answer_raw"] = raw_answer
-
-        df.at[index, "ai_answer_letter"] = answer_letter
-
-        df.at[index, "ai_correct"] = is_correct
-
-        df.at[index, "response_time"] = response_time
-
-        df.at[index, "prompt"] = prompt
-
-        df.at[index, "status"] = "success"
-
-
-        # ----------------------------------------------------
-        # Affichage
-        # ----------------------------------------------------
-
-        print(f"Réponse brute IA : {raw_answer}")
-        print(f"Réponse IA      : {answer_letter}")
-        print(f"Bonne réponse   : {correct_letter}")
-        print(f"Correct ?       : {is_correct}")
-        print(f"Temps           : {response_time:.2f} secondes")
-
+            print(
+                f"Question {i}/{len(df)} | "
+                f"Prompt: {prompt_version} | "
+                f"Réponse: {answer_letter} | "
+                f"Correcte: {is_correct} | "
+                f"Temps: {response_time:.2f}s"
+            )
 
     except Exception as e:
 
-        print(f"ERREUR : {e}")
-
-        df.at[index, "status"] = f"error: {str(e)}"
-
+        print(
+            f"Question {i}/{len(df)} | ERREUR: {str(e)}"
+        )
 
     # ========================================================
     # CHECKPOINT
@@ -306,32 +275,40 @@ for i, (index, row) in enumerate(df.iterrows(), start=1):
 
     if i % CHECKPOINT_EVERY == 0 or i == len(df):
 
+        results_df = pd.DataFrame(results)
+
         os.makedirs("data/silver", exist_ok=True)
 
-        df.to_parquet(
+        results_df.to_parquet(
             OUTPUT_PATH,
             index=False
         )
 
-        print()
-        print(f"Checkpoint sauvegardé : {OUTPUT_PATH}")
+        print(
+            f"Checkpoint sauvegardé : "
+            f"{i}/{len(df)} questions"
+        )
+
+
+# ============================================================
+# SAUVEGARDE FINALE
+# ============================================================
+
+results_df = pd.DataFrame(results)
+
+results_df.to_parquet(
+    OUTPUT_PATH,
+    index=False
+)
 
 
 # ============================================================
 # RESULTATS
 # ============================================================
 
-successful = df[df["status"] == "success"]
-
-print()
-
-print("=" * 70)
-print("BENCHMARK TERMINÉ")
-print("=" * 70)
-
-print(f"Questions traitées : {len(df)}")
-print(f"Réponses réussies  : {len(successful)}")
-
+successful = results_df[
+    results_df["status"] == "success"
+]
 
 if len(successful) > 0:
 
@@ -339,10 +316,16 @@ if len(successful) > 0:
 
     avg_time = successful["response_time"].mean()
 
-    print(f"Accuracy           : {accuracy:.2f}%")
-    print(f"Temps moyen        : {avg_time:.2f} secondes")
+    print()
 
+    print("BENCHMARK TERMINÉ")
 
-print()
+    print(f"Questions testées : {len(df)}")
 
-print(f"Fichier généré : {OUTPUT_PATH}")
+    print(f"Réponses réussies : {len(successful)}")
+
+    print(f"Accuracy globale : {accuracy:.2f}%")
+
+    print(f"Temps moyen : {avg_time:.2f} sec/question")
+
+    print(f"Fichier : {OUTPUT_PATH}")

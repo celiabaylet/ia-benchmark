@@ -1,35 +1,38 @@
-with source as (
+with responses as (
 
     select *
     from {{ source('silver', 'responses') }}
 
 ),
 
-cleaned as (
+questions as (
 
-    select
-        question_id,
-        category,
-        difficulty,
-        type,
-        question,
-        correct_answer,
-
-        ai_answer_raw,
-        ai_answer_letter,
-        correct_letter,
-        ai_correct,
-
-        response_time,
-
-        model,
-        prompt_version
-
-    from source
-
-    where status = 'success'
+    select *
+    from {{ source('silver', 'questions') }}
 
 )
 
-select *
-from cleaned
+select
+    r.question_id,
+
+    q.category,
+    q.difficulty,
+    q.type,
+    q.question,
+    q.correct_answer,
+
+    r.ai_answer_raw,
+    r.ai_answer_letter,
+    r.correct_letter,
+    r.ai_correct,
+    r.response_time,
+    r.model,
+    r.prompt_version,
+    r.status
+
+from responses r
+
+left join questions q
+    on r.question_id = q.question_id
+
+where r.status = 'success'

@@ -5,8 +5,8 @@ sources:
     tables:
       - name: responses
         meta:
-          external_location: "read_parquet('./silver/*_responses.parquet')"
+          external_location: "read_parquet('data/silver/responses.parquet')"
 
       - name: questions
         meta:
-          external_location: "read_parquet('./silver/*_questions_clean.parquet')"
+          external_location: "read_parquet('data/silver/questions_clean.parquet')"

@@ -1,13 +1,10 @@
 select
-    model,
     difficulty,
     count(*) as total_questions,
     sum(correct_flag) as correct_answers,
-    avg(correct_flag) * 100 as accuracy,
-    avg(response_time) as avg_response_time
+    round(avg(correct_flag) * 100 ,2) as accuracy_percent,
+    round(avg(response_time) ,2) as avg_response_time
 
 from {{ ref('int_responses') }}
 
-group by
-    model,
-    difficulty
+group by difficulty
