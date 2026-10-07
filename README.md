@@ -86,7 +86,6 @@ EXPLICATIONS :
         mart_prompt_performance
 
 
-
 Dans la granularité des couches Silver et Gold, on utilise l’organisation `staging`, `intermediate` et `mart` (dans une base duckdb).
 Staging : première couche qui récupère et standardise les réponses du modèle, en les enrichissant avec les informations des questions.
 Intermediate : couche qui prépare les indicateurs nécessaires, notamment correct_flag, qui permet d’identifier si la réponse du modèle est correcte.
