@@ -196,13 +196,6 @@ st.dataframe(
 
 best_category = df_category.iloc[0]
 
-st.success(
-    f"Catégorie la plus performante : "
-    f"**{best_category['category']}** "
-    f"avec **{best_category['accuracy_percent']:.2f} %** de bonnes réponses."
-)
-
-
 st.divider()
 
 
@@ -437,9 +430,10 @@ st.dataframe(
 
 st.divider()
 
+
 st.header(" Synthèse")
 
-# Meilleure catégorie
+# Meilleure catégorie en taux de réussite
 best_category = df_category.loc[
     df_category["accuracy_percent"].idxmax()
 ]
@@ -449,9 +443,19 @@ best_difficulty = df_difficulty.loc[
     df_difficulty["accuracy_percent"].idxmax()
 ]
 
+# Difficulté avec le temps de réponse moyen le plus faible
+best_difficulty_time = df_difficulty.loc[
+    df_difficulty["avg_response_time"].idxmin()
+]
+
 # Type avec meilleure accuracy
 best_type = df_type.loc[
     df_type["accuracy_percent"].idxmax()
+]
+
+# Type avec le temps de réponse moyen le plus faible
+best_type_time = df_type.loc[
+    df_type["avg_response_time"].idxmin()
 ]
 
 # Prompt avec meilleure accuracy
@@ -459,19 +463,30 @@ best_prompt = df_prompt.loc[
     df_prompt["accuracy_percent"].idxmax()
 ]
 
+# Prompt avec le temps de réponse moyen le plus faible
+best_prompt_time = df_prompt.loc[
+    df_prompt["avg_response_time"].idxmin()
+]
+
 st.markdown(
     f"""
-    - **Meilleure catégorie :** {best_category['category']} 
+    - **Meilleure catégorie en taux de réussite :** {best_category['category']}
       ({best_category['accuracy_percent']:.2f} %)
-    - **Difficulté avec la meilleure performance :** 
-      {best_difficulty['difficulty_label']} 
-      ({best_difficulty['accuracy_percent']:.2f} %)
-    - **Type de question le plus performant :** 
-      {best_type['type_label']} 
-      ({best_type['accuracy_percent']:.2f} %)
-    - **Prompt le plus performant :** 
-      {best_prompt['language']} 
-      ({best_prompt['accuracy_percent']:.2f} %)
+
+    - **Difficulté :** meilleur taux de réussite = {best_difficulty['difficulty_label']}
+      ({best_difficulty['accuracy_percent']:.2f} %) ;
+      temps de réponse moyen le plus faible = {best_difficulty_time['difficulty_label']}
+      ({best_difficulty_time['avg_response_time']:.2f} s)
+
+    - **Type de question :** meilleur taux de réussite = {best_type['type_label']}
+      ({best_type['accuracy_percent']:.2f} %) ;
+      temps de réponse moyen le plus faible = {best_type_time['type_label']}
+      ({best_type_time['avg_response_time']:.2f} s)
+
+    - **Prompt :** meilleur taux de réussite = {best_prompt['language']}
+      ({best_prompt['accuracy_percent']:.2f} %) ;
+      temps de réponse moyen le plus faible = {best_prompt_time['language']}
+      ({best_prompt_time['avg_response_time']:.2f} s)
     """
 )
 
