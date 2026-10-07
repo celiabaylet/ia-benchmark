@@ -3,8 +3,6 @@
 
 # Données générées
 bronze/
-silver/
-*.parquet
 
 # dbt
 target/
