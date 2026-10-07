@@ -37,15 +37,15 @@ Conservation du fichier Bronze comme source non modifiée
 - `Couche silver` : fichier src/enrichment/silver_clean.py + réponses de l'IA avec le fichier src/enrichment/openAI_benchmark.py (script fr/en)
     - Silver contient des observations propres et exploitables
 
-    Suppression des valeurs invalides
+        Suppression des valeurs invalides
 
-    Normalisation des champs (création d'un 'QCM' pour l'IA)
+        Normalisation des champs (création d'un 'QCM' pour l'IA)
 
-    Suppression des doublons des questions
+        Suppression des doublons des questions
 
-    Création d’un `question_id`
+        Création d’un `question_id`
 
-    Conversion au format Parquet
+        Conversion au format Parquet
 
 
 EXPLICATIONS :
@@ -99,5 +99,7 @@ Mart : couche qui répond aux questions métier en calculant les indicateurs fin
 - Création d’un fichier `.env` à la racine du projet
 - Stockage de la clé API et de l’URL de l’API OpenAI-compatible
 - Le `.env` est ajouté au `.gitignore` afin de ne pas exposer la clé API
+
     -OPENAI_API_KEY=MASUPERAPI
+
     -OPENAI_BASE_URL=MONURL
