@@ -27,7 +27,7 @@ Le langage du prompt (français ou anglais) influence-t-il les performances et l
 # Méthodologie
 Mise en place d'une architecture en médaillon pour stocker les données de ce projet.
 
-### **Architecture :**
+# **Architecture :**
 
 - `Couche bronze` : Données brutes issues du scraping : `questions_raw.csv` réalisé grâce au fichier src/ingestion/opentdb.py
 Récupération des questions depuis l’API Open Trivia Database (OpenTDB)
@@ -100,7 +100,7 @@ dbt_projet.yml : materialized indique sous quelle forme dbt va créer le résult
 Le dbt_project.yml configure le fonctionnement et l'organisation du projet dbt, tandis que le profiles.yml configure la connexion au Data Warehouse. Dans notre projet, le moteur est DuckDB et notre base est le fichier warehouse/trivial.duckdb.
 
 
-### **Ingénierie des données :**
+# **Ingénierie des données :**
 
 - Utilisation de dbt pour construire le lignage `staging → intermediate → gold`:
     -Générer les fichiers de documentation et le catalogue
@@ -109,7 +109,7 @@ Le dbt_project.yml configure le fonctionnement et l'organisation du projet dbt, 
         dbt docs serve
 
 
-### **Visualisation des résultats du benchmark :**
+# **Visualisation des résultats du benchmark :**
 - **Streamlit** pour produire un dashboard interactif des résultats du benchmark
 
 
