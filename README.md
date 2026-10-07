@@ -97,6 +97,8 @@ Mart : couche qui répond aux questions métier en calculant les indicateurs fin
 
 dbt_projet.yml : materialized indique sous quelle forme dbt va créer le résultat d'un modèle dans le Data Warehouse. Dans notre projet, le Staging est matérialisé en View car il sert principalement à préparer les données, tandis que l'Intermediate et les Marts sont matérialisés en Tables car leurs transformations et leurs indicateurs sont réutilisés et consommés par le dashboard.
 
+Le dbt_project.yml configure le fonctionnement et l'organisation du projet dbt, tandis que le profiles.yml configure la connexion au Data Warehouse. Dans notre projet, le moteur est DuckDB et notre base est le fichier warehouse/trivial.duckdb.
+
 
 ### **Ingénierie des données :**
 
