@@ -74,11 +74,11 @@ EXPLICATIONS :
 - `Couche gold` : Données métiers (performance des prompts) --> création de la base duckdb dans warehouse
     - Gold répond directement à nos questions métier 
 
-    Stockage des données Gold :
+    - Stockage des données Gold :
 
-        Les modèles Mart sont matérialisés dans le schéma main_gold de notre base DuckDB.
+    Les modèles Mart sont matérialisés dans le schéma main_gold de notre base DuckDB.
 
-        Ils contiennent les indicateurs métiers utilisés pour répondre à nos quatre questions d’analyse :
+    Ils contiennent les indicateurs métiers utilisés pour répondre à nos quatre questions d’analyse :
 
         mart_category_performance, 
         mart_difficulty_performance, 
