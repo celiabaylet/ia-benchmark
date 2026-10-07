@@ -130,3 +130,6 @@ Le dbt_project.yml configure le fonctionnement et l'organisation du projet dbt, 
     -OPENAI_API_KEY=MASUPERAPI
 
     -OPENAI_BASE_URL=MONURL
+
+
+![alt text](image.png)
