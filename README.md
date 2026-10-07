@@ -50,7 +50,7 @@ Conservation du fichier Bronze comme source non modifiée
 
 EXPLICATIONS :
 
-    - Chaque question est transformée en QCM
+    - Chaque question est transformée en QCM : afin de standardiser l'évaluation du modèle et d'éviter les faux négatifs liés aux différences de formulation entre la réponse du modèle et la réponse attendue. 
 
     - Le modèle doit répondre uniquement par A, B, C ou D
 
