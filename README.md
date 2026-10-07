@@ -114,6 +114,8 @@ Le dbt_project.yml configure le fonctionnement et l'organisation du projet dbt, 
 # **Visualisation des résultats du benchmark :**
 - **Streamlit** pour produire un dashboard interactif des résultats du benchmark:
 
+        git clone le-repo
+        cd projetTrivialPoursuite
         `streamlit run dashboard/app.py`
 
 # Setup complet
