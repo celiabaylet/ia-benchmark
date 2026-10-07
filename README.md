@@ -86,10 +86,17 @@ EXPLICATIONS :
         mart_prompt_performance
 
 
+Le fichier sources.yml permet à dbt de déclarer nos données Silver comme des sources. Il fait le lien entre les noms logiques utilisés dans nos modèles dbt, comme silver.responses, et les fichiers Parquet physiques présents dans data/silver
+
+
 Dans la granularité des couches Silver et Gold, on utilise l’organisation `staging`, `intermediate` et `mart` (dans une base duckdb).
 Staging : première couche qui récupère et standardise les réponses du modèle, en les enrichissant avec les informations des questions.
 Intermediate : couche qui prépare les indicateurs nécessaires, notamment correct_flag, qui permet d’identifier si la réponse du modèle est correcte.
 Mart : couche qui répond aux questions métier en calculant les indicateurs finaux, comme le taux de réussite et le temps de réponse moyen. 
+
+
+dbt_projet.yml : materialized indique sous quelle forme dbt va créer le résultat d'un modèle dans le Data Warehouse. Dans notre projet, le Staging est matérialisé en View car il sert principalement à préparer les données, tandis que l'Intermediate et les Marts sont matérialisés en Tables car leurs transformations et leurs indicateurs sont réutilisés et consommés par le dashboard.
+
 
 ### **Ingénierie des données :**
 
