@@ -1,7 +1,11 @@
+# Secrets
 .env
-bronze
-silver
-.claude
+
+# Données générées
+bronze/
+silver/
 *.parquet
-target
-log
+
+# dbt
+target/
+log/
